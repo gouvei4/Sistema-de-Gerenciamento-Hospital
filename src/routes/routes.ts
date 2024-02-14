@@ -1,6 +1,8 @@
 import express from 'express';
 import CreateHospitalController from '../controllers/create.hospital.controller';
 import SignInHospitalController from '../controllers/signin.hospital.controller';
+import GetAllHospitalsController from '../controllers/get.hospital.controller';
+
 
 const routes = express.Router();
 
@@ -10,5 +12,6 @@ routes.get('/', function(request, response) {
 
 routes.use('/api/v1/hospital', CreateHospitalController.router);
 routes.use('/api/v1/hospital/signup', SignInHospitalController.router)
+routes.use('/api/v1/hospitals', GetAllHospitalsController. router)
 
 export default routes;
