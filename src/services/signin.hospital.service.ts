@@ -31,30 +31,17 @@ class SignInHospitalService {
         });
         return;
       }
-
-      const token = jwt.sign(
-        {
-          _id: isUserExist?._id,
-          email: isUserExist?.email,
-        },
-        "token-jwt",
-        {
-          expiresIn: "20Days",
-        }
-      );
       response.status(200).json({
         nameHospital: isUserExist.nameHospital,
         email: isUserExist.email,
-        token: token,
       });
     } catch (err) {
       response.status(500).json({
-        type: 'Server error',
-        message: 'Wrong server',
+        type: "Server error",
+        message: "Wrong server",
       });
     }
   }
 }
 
 export default new SignInHospitalService();
-
