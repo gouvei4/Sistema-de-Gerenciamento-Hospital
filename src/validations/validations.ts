@@ -54,8 +54,8 @@ const dateSchema = yup
 export const createValidationSchemaHospital = yup.object({
   nameHospital: yup.string().min(5).required("Name is required"),
   address: yup.string().min(5).required("Address is required"),
-  leitos: yup.string().required("Leitos is required"),
-  leitosDisponiveis: yup.string().required("Available beds is required"),
+  beds: yup.string().required("Leitos is required"),
+  availableBeds: yup.string().required("Available beds is required"),
   email: yup
     .string()
     .email("Invalid email format")
@@ -72,10 +72,9 @@ export const createValidationSchemaPaciente = yup.object({
     .string()
     .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "Invalid CPF format")
     .required("CPF is required"),
-  nascimento: dateSchema.required("Birth is required"),
-  date: dateSchema.required("Date is required"),
-  sexo: yup.string().required("Sexo is required"),
-  dataEntrada: dateSchema.required("Date Entry is required"),
+    birth: dateSchema.required("Birth is required"),
+  gender: yup.string().required("Gender is required"),
+  dateEntry: dateSchema.required("Date Entry is required"),
 });
 
 export const createValidationSchemaStock = yup.object({

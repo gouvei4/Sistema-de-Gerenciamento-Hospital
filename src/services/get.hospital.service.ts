@@ -7,6 +7,7 @@ class GetAllHospitalsService {
       const hospitals: IHospital[] = await Hospital.find();
 
       const filteredHospitals = hospitals.map((hospital) => ({
+        _id: hospital._id,
         nameHospital: hospital.nameHospital,
         address: hospital.address,
         availableBeds: hospital.availableBeds,

@@ -17,7 +17,7 @@ class GetParamsHospitals {
 
       const hospitals = await Hospital.find(
         { nameHospital: { $regex: new RegExp(searchName, "i") } },
-        { nameHospital: 1, leitos: 1, leitosDisponiveis: 1, address: 1, }
+        { nameHospital: 1, beds: 1, availableBeds: 1, address: 1, }
       );
 
       if (hospitals.length === 0) {

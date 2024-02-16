@@ -1,8 +1,7 @@
-export type Paciente = {
+export type Patient = {
     name: string;
     cpf: string;
-    nascimento: Date;
-    date: Date;
-    sexo: string;
-    dataEntrada: Date;
+    birth: Date;
+    gender: string;
+    dateEntry: Date;
 }

@@ -35,6 +35,21 @@ class SignInHospitalService {
         nameHospital: isUserExist.nameHospital,
         email: isUserExist.email,
       });
+      const token = jwt.sign(
+        {
+          _id: isUserExist?._id,
+          email: isUserExist?.email,
+        },
+        'token-jwt',
+        {
+          expiresIn: '20days',
+        },
+      );
+      response.status(200).json({
+        nameHospital: isUserExist?.nameHospital,
+        email: isUserExist?.email,
+        token: token,
+      });
     } catch (err) {
       response.status(500).json({
         type: "Server error",
