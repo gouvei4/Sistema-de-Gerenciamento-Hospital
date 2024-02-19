@@ -2,6 +2,7 @@
 # Sistema-de-Gerenciamento-Hospitalar
 
 Objetivo dessa API é para manter a organização de um sistema de saúde, contendo nela: Cadastros de hospitais, cadastros de usuários , cadastro de estoque com itens, tentando sempre facilitar o trabalho dos usuários da API
+Para usar um banco de dados MongoDB, siga o exemplo do .ENV.EXAMPLE, usando as suas credenciais para com que a API funcione perfeitamente.
 
 
 ## Recursos usados
