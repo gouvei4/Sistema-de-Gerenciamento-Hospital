@@ -1,42 +1,32 @@
 import { Request, Response } from "express";
-import IPatient from "../models/patient.models";
+import Patient from "../models/patient.models";
 
 class GetPatientService {
   public async getPatient(request: Request, response: Response) {
     try {
-      const hospital = request.query.hospitals;
-      const authorizationHeader = request.headers.authorization;
-      console.log(`Buscando pacientes do hospital: ${hospital}`);
+      const hospitalId = request.query.nameHospital;
 
-      if (!authorizationHeader) {
-        response.status(401).json({
-          success: false,
-          message: "Not Authenticated. Access token is missing",
-        });
-        return;
-      }
-      if (!hospital) {
-        console.log('Nome do hospital não foi fornecido.');
+      if (!hospitalId) {
         return response.status(400).json({
-          error: "Nome do hospital não foi fornecido na solicitação.",
+          error: "Parameter 'hospitalId' is missing in the request query.",
         });
       }
 
-      const patientsInHospital = await IPatient.find({ hospital: hospital });
+      const patients = await Patient.find({ hospitalId });
 
-      if (patientsInHospital.length > 0) {
-        console.log(`Pacientes encontrados para o hospital ${hospital}:`, patientsInHospital);
-        return response.json(patientsInHospital);
-      } else {
-        console.log(`Nenhum paciente encontrado para o hospital ${hospital}.`);
+      if (patients.length === 0) {
         return response.status(404).json({
-          error: "Nenhum paciente encontrado para o hospital especificado.",
+          error: "No patients found for the specified hospital ID.",
         });
       }
+
+      return response.status(200).json({
+        message: "Patient found",
+        patients,
+      });
     } catch (error: any) {
-      console.error('Erro ao buscar pacientes:', error.message);
       return response.status(500).json({
-        error: "Erro ao buscar pacientes. Verifique o console para mais detalhes.",
+        error: "Internal server error.",
       });
     }
   }
