@@ -54,16 +54,31 @@ const dateSchema = yup
 export const createValidationSchemaHospital = yup.object({
   nameHospital: yup.string().min(5).required("Name is required"),
   address: yup.string().min(5).required("Address is required"),
-  beds: yup.string().required("Leitos is required"),
-  availableBeds: yup.string().required("Available beds is required"),
+  beds: yup
+    .number()
+    .typeError("Leitos must be a number")
+    .positive("Leitos must be greater than 0")
+    .integer("Leitos must be an integer")
+    .min(1, 'Leitos must be at least 1')
+    .required("Leitos is required"),
+  availableBeds: yup
+  .number()
+  .typeError("AvailableBs must be a number")
+  .positive("AvailableBs must be greater than 0")
+  .integer("AvailableBs must be integer")
+  .required("Available beds is required"),
   email: yup
     .string()
     .email("Invalid email format")
     .required("Email is required"),
-  password: yup
+    password: yup
     .string()
     .min(6, "Password must be at least 6 characters")
     .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Passwords must match')
+    .required('Confirm Password is required'),
 });
 
 export const createValidationSchemaPaciente = yup.object({
@@ -72,13 +87,13 @@ export const createValidationSchemaPaciente = yup.object({
     .string()
     .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "Invalid CPF format")
     .required("CPF is required"),
-    birth: dateSchema.required("Birth is required"),
+  birth: dateSchema.required("Birth is required"),
   gender: yup.string().required("Gender is required"),
   dateEntry: dateSchema.required("Date Entry is required"),
 });
 
 export const createValidationSchemaStock = yup.object({
-  name: yup.string().min(5).required("Name is required"),
+  name: yup.string().min(3).required("Name is required"),
   description: yup.string().required("Description is required"),
-  amount: yup.number().required("Amount is required"),
+  amount: yup.number().min(1, 'Amount must be at least 1').required("Amount is required"),
 });
