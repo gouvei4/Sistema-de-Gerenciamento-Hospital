@@ -1,3 +1,5 @@
+import  Patient  from "../models/patient.models";
+import { Stock } from "./stock";
 
 export type Hospital = {
     nameHospital: string,
@@ -7,4 +9,6 @@ export type Hospital = {
     email: string;
     password: string;
     confirmPassword: string;
+    patients: Patient[];
+    stocks: Stock[];
 }
