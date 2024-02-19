@@ -5,6 +5,10 @@ import GetAllHospitalsController from '../controllers/get.hospital.controller';
 import GetParamsHospitalController from '../controllers/get.hospitalparams.controller';
 import CreatePatientController from '../controllers/create.patient.controller';
 import GetPatientController from '../controllers/get.patienthospital.controller';
+import CreateStockController from '../controllers/create.stock.controller';
+import GetStockController from '../controllers/get.stock.controller';
+
+
 
 
 const routes = express.Router();
@@ -13,12 +17,15 @@ routes.get('/', function(request, response) {
     response.json({ API: 'Welcome to JWT Authentication'});
 });
 
-routes.use('/api/v1/hospital', CreateHospitalController.router);
-routes.use('/api/v1/hospital/signup', SignInHospitalController.router)
+routes.use('/api/v1/signin', CreateHospitalController.router);
+routes.use('/api/v1/signup', SignInHospitalController.router)
 routes.use('/api/v1/hospitais', GetAllHospitalsController. router)
 routes.use('/api/v1/hospital', GetParamsHospitalController. router)
-routes.use('/api/v1/hospitals', CreatePatientController. router)
-routes.use('/api/v1/patients/', GetPatientController. router)
+routes.use('/api/v1/hospital', CreatePatientController. router)
+routes.use('/api/v1/hospitals', GetPatientController. router)
+routes.use('/api/v1/hospital', CreateStockController. router)
+routes.use('/api/v1/hospital/stocks', GetStockController.router)
+
 
 
 
