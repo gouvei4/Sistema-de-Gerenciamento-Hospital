@@ -31,10 +31,6 @@ class SignInHospitalService {
         });
         return;
       }
-      response.status(200).json({
-        nameHospital: isUserExist.nameHospital,
-        email: isUserExist.email,
-      });
       const token = jwt.sign(
         {
           _id: isUserExist?._id,
@@ -46,6 +42,7 @@ class SignInHospitalService {
         },
       );
       response.status(200).json({
+        message: 'Welcome!',
         nameHospital: isUserExist?.nameHospital,
         email: isUserExist?.email,
         token: token,
