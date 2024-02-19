@@ -37,6 +37,15 @@ class CreateHospitalService {
           return response.status(404).json({ error: "Validation error" });
         }
       }
+
+      const existingUser = await hospitalSchema.findOne({
+        email: request.body.email,
+      });
+
+      if (existingUser) {
+        return response.status(400).json({ error: "Email already exists" });
+      }
+      
       const payload = request.body as Hospital;
       const hashedPassword = await bcrypt.hash(payload.password, 10);
 
@@ -52,6 +61,7 @@ class CreateHospitalService {
         user: newUser,
       });
     } catch (error) {
+      console.log(error);
       response.status(500).json({
         type: "Server Error",
         message: "Wrong Error",
