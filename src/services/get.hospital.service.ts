@@ -10,6 +10,7 @@ class GetAllHospitalsService {
         _id: hospital._id,
         nameHospital: hospital.nameHospital,
         address: hospital.address,
+        beds: hospital.beds,
         availableBeds: hospital.availableBeds,
       }));
 
