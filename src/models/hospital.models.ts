@@ -1,17 +1,17 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { Hospital } from "../types/hospital";
 
 export interface IHospital extends Document {
-  nameHospital: string,
-  address: string,
-  beds: Number,
-  availableBeds: Number,
+  nameHospital: string;
+  address: string;
+  beds: number;
+  availableBeds: number;
   email: string;
   password: string;
   confirmPassword: string;
+  patients: string[];
 }
 
-const hospitalSchema: Schema = new Schema<Hospital>({
+const hospitalSchema: Schema<IHospital> = new Schema<IHospital>({
   nameHospital: { type: String, required: true },
   address: { type: String, required: true },
   beds: { type: Number, required: true },
