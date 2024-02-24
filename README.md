@@ -69,6 +69,12 @@ Para usar um banco de dados MongoDB, siga o exemplo do .ENV.EXAMPLE, usando as s
   GET /api/v1/hospital/stocks?hospitalId=
 ```
 
+#### Faz o update do stock de um hospital por ID
+
+```http
+  POST /api/v1/hospital/:hospitalId/:stockId
+```
+
 ## Autores
 
 - [Afonso Gouveia Bassani](https://github.com/gouvei4)
