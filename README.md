@@ -25,12 +25,12 @@ Para usar um banco de dados MongoDB, siga o exemplo do .ENV.EXAMPLE, usando as s
 #### Criação de um hospital
 
 ```http
-  POST /api/v1/signin
+  POST /api/v1/signup
 ```
 #### Fazer login do hospital
 
 ```http
-  POST /api/v1/signup (Ira retornar um TOKEN JWT)
+  POST /api/v1/signin (Ira retornar um TOKEN JWT)
 ```
 
 #### Retorna todos hospitais cadastrados
