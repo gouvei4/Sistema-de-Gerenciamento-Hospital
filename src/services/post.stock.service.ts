@@ -42,6 +42,7 @@ class CreateStockService {
         name,
         description,
         amount,
+        hospitalId
       });
       response.status(201).json({
         success: true,
