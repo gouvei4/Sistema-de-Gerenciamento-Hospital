@@ -97,3 +97,9 @@ export const createValidationSchemaStock = yup.object({
   description: yup.string().required("Description is required"),
   amount: yup.number().min(1, 'Amount must be at least 1').required("Amount is required"),
 });
+
+export const updateValidationSchemaStock = yup.object({
+  name: yup.string().min(3).required("Name is required"),
+  description: yup.string().required("Description is required"),
+  amount: yup.number().required("Amount is required"),
+})
