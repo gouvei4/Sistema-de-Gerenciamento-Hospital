@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { updateValidationSchemaStock } from "../validations/validations";
 import { ValidationError } from "yup";
-import Stock from "../models/stock.models"; // Importe seu modelo
+import Stock from "../models/stock.models";
 
 class UpdateStockService {
   public async UpdateStock(request: Request, response: Response) {
