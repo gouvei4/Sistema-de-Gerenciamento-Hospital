@@ -9,7 +9,7 @@ class GetPatientController {
     }
 
     initRoutes() {
-        this.router.get('', GetPatientService.getPatient);
+        this.router.get('/:hospitalId/patients', GetPatientService.getPatient);
     }
 }
 
