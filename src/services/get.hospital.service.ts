@@ -23,7 +23,7 @@ class GetAllHospitalsService {
 
       return response.status(200).json({
         status: 201,
-        message: "Hospitais",
+        message: "Successful operation. Returns a list of hospitals.",
         filteredHospitals,
       });
     } catch (error: any) {

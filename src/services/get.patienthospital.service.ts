@@ -4,7 +4,7 @@ import Patient from "../models/patient.models";
 class GetPatientService {
   public async getPatient(request: Request, response: Response) {
     try {
-      const hospitalId = request.query.nameHospital;
+      const hospitalId = request.params.hospitalId;
 
       if (!hospitalId) {
         return response.status(400).json({
@@ -21,7 +21,7 @@ class GetPatientService {
       }
 
       return response.status(200).json({
-        message: "Patient found",
+        message: "Successful operation. Returns the list of patients.",
         patients,
       });
     } catch (error: any) {
