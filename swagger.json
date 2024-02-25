@@ -1,0 +1,553 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Hospital system API",
+        "description": "Hospital management system.",
+        "version": "1.0.0"
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "paths": {
+        "/api/v1/signup": {
+            "post": {
+                "summary": "Register an hospital",
+                "description": "Create a new hospital on the system.",
+                "tags": [
+                    "Hospital"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "nameHospital": "Hospital teste",
+                                        "address": "Rua teste, 154",
+                                        "beds": 50,
+                                        "availableBeds": 80,
+                                        "email": "hospitalteste@gmail.com",
+                                        "password": "teste123",
+                                        "confirmPassword": "teste123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Return the created hospital."
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "type": "Validation Error",
+                                            "errors": [
+                                                {
+                                                    "resource": "email",
+                                                    "message": "invalid email"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "statusCode": 500,
+                                            "error": "Internal Server Error",
+                                            "message": "Something went wrong"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/signin": {
+            "post": {
+                "summary": "Log hospital in",
+                "description": "Log hospital in the system.",
+                "tags": [
+                    "Hospital"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "email": "hospitalteste@gmail.com",
+                                        "password": "teste123"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Return the logged hospital."
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "resource": "CannotSignIn",
+                                            "message": "Invalid email or password"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "statusCode": 500,
+                                            "error": "Internal Server Error",
+                                            "message": "Something went wrong"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/hospitais": {
+            "get": {
+                "summary": "Get all hospitals",
+                "description": "Retrieve all hospitals.",
+                "tags": [
+                    "Hospital"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation. Returns a list of hospitals."
+                    },
+                    "404": {
+                        "description": "Not found. No hospitals available."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital": {
+            "get": {
+                "summary": "Get hospital by name",
+                "description": "Get hospital by name.",
+                "tags": [
+                    "Hospital"
+                ],
+                "parameters": [
+                    {
+                        "name": "nameHospital",
+                        "in": "query",
+                        "description": "Name of the hospital",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation. Returns the hospital."
+                    },
+                    "404": {
+                        "description": "Hospital not found. Please check the name and try again later."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital/{hospitalId}/patients": {
+            "post": {
+                "summary": "Register a patient at a specific hospital",
+                "description": "Create a new patient at a specific hospital.",
+                "tags": [
+                    "Patient"
+                ],
+                "parameters": [
+                    {
+                        "name": "hospitalId",
+                        "in": "path",
+                        "description": "ID of the hospital where the patient will be registered",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "John Doe",
+                                        "cpf": "494.222.222-92",
+                                        "birth": "01/06/1998",
+                                        "gender": "Male",
+                                        "dateEntry": "21/02/2024"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Patient registered successfully."
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "type": "Validation Error",
+                                            "errors": [
+                                                {
+                                                    "resource": "email",
+                                                    "message": "invalid email"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "statusCode": 500,
+                                            "error": "Internal Server Error",
+                                            "message": "Error when registering patient"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/hospitals/{hospitalId}/patients": {
+            "get": {
+                "summary": "Get all patients of a specific hospital by ID",
+                "description": "Get all patients of a specific hospital by ID.",
+                "tags": [
+                    "Patient"
+                ],
+                "parameters": [
+                    {
+                        "name": "hospitalId",
+                        "in": "path",
+                        "description": "ID of the hospital",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation. Returns the list of patients."
+                    },
+                    "404": {
+                        "description": "Hospital not found. Please check the ID and try again later."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital/{hospitalId}/stock": {
+            "post": {
+                "summary": "Register a stock at a specific hospital",
+                "description": "Create a stock at a specific hospital.",
+                "tags": [
+                    "Stock"
+                ],
+                "parameters": [
+                    {
+                        "name": "hospitalId",
+                        "in": "path",
+                        "description": "ID of the hospital where the stock will be registered",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "name": "Vacina COVID-19",
+                                        "description": "Vacina para previnir o covid-19",
+                                        "amount": 50
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Hospital stock registered successfully."
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "statusCode": 500,
+                                            "error": "Internal Server Error",
+                                            "message": "Error when registering stock"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital/stocks?hospitalId={hospitalId}": {
+            "get": {
+                "summary": "Get all stock of a specific hospital by ID",
+                "description": "Get all stock of a specific hospital by ID.",
+                "tags": [
+                    "Stock"
+                ],
+                "parameters": [
+                    {
+                        "name": "hospitalId",
+                        "in": "path",
+                        "description": "ID of the hospital",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation. Returns the list of patients."
+                    },
+                    "404": {
+                        "description": "No Stocks found for the specifed hospital ID."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital/{hospitalId}/{stockId}": {
+            "put": {
+                "summary": "Update stock of a specific hospital by ID",
+                "description": "Update stock of a specific hospital by ID.",
+                "tags": [
+                    "Stock"
+                ],
+                "parameters": [
+                    {
+                        "name": "hospitalId",
+                        "in": "path",
+                        "description": "ID of the hospital",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "stockId",
+                        "in": "path",
+                        "description": "ID of the stock",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Name of the stock"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "Description of the stock"
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "description": "Amount of the stock"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "description",
+                                    "amount"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Stock updated successfully."
+                    },
+                    "400": {
+                        "description": "Bad request - Invalid input."
+                    },
+                    "404": {
+                        "description": "No Stocks found for the specified hospital ID."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital/{id}": {
+            "delete": {
+                "summary": "Delete a patient from a specific hospital by IDs",
+                "description": "Delete a patient from a specific hospital by IDs.",
+                "tags": [
+                    "Patient"
+                ],
+                "parameters": [
+                    {
+                        "name": "patientId",
+                        "in": "path",
+                        "description": "ID of the patient",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Patient deleted successfully."
+                    },
+                    "404": {
+                        "description": "Patient was not found."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        },
+        "/api/v1/hospital/stock/{stockId}": {
+            "delete": {
+                "summary": "Delete a stock from a specific hospital by IDs",
+                "description": "Delete a stock from a specific hospital by IDs.",
+                "tags": [
+                    "Stock"
+                ],
+                "parameters": [
+                    {
+                        "name": "stockId",
+                        "in": "path",
+                        "description": "ID of the stock",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Stock was successfully deleted."
+                    },
+                    "404": {
+                        "description": "Stock was not found."
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        }
+    }
+}
