@@ -1,6 +1,8 @@
 import cors from "cors";
 import express, { Application } from "express";
 import mongoose from 'mongoose';
+import swagger from '../swagger.json';
+import swaggerUi from 'swagger-ui-express';
 import dotenv from 'dotenv';
 import routes from "./routes/routes";
 
@@ -14,11 +16,12 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-app.use(routes);
 app.use(express.json());
 app.use(express.urlencoded({
-    extended: true,
+  extended: true,
 }))
+app.use(routes);
+app.use('/api/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
