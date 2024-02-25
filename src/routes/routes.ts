@@ -8,6 +8,8 @@ import GetPatientController from '../controllers/get.patienthospital.controller'
 import CreateStockController from '../controllers/create.stock.controller';
 import GetStockController from '../controllers/get.stock.controller';
 import UpdateStockController from '../controllers/update.stock.controller';
+import DeletePatientController from '../controllers/delete.patient.controller';
+import DeleteStockController from '../controllers/delete.stocks.controller';
 
 const routes = express.Router();
 
@@ -24,6 +26,10 @@ routes.use('/api/v1/hospitals', GetPatientController. router)
 routes.use('/api/v1/hospital', CreateStockController. router)
 routes.use('/api/v1/hospital/stocks', GetStockController.router)
 routes.use('/api/v1/hospital', UpdateStockController.router)
+routes.use('/api/v1/hospital', DeletePatientController.router)
+routes.use('/api/v1/hospital/stock', DeleteStockController.router)
+
+
 
 
 
