@@ -17,8 +17,14 @@ Para usar um banco de dados MongoDB, siga o exemplo do .ENV.EXAMPLE, usando as s
 - Cors.
 - JWT Token.
 - Nodemon.
+- Swagger.
 
+- ### Swagger Documentation
 
+- **Swagger UI**
+
+  - Endpoint: `/api/v1/api-docs/`
+  - Description: Explore the API using Swagger documentation.
 
 ## Documentação da API
 
@@ -73,6 +79,18 @@ Para usar um banco de dados MongoDB, siga o exemplo do .ENV.EXAMPLE, usando as s
 
 ```http
   POST /api/v1/hospital/:hospitalId/:stockId
+```
+
+#### Deleta o paciente de um hospital específico
+
+```http
+  DELETE /api/v1/hospital/:id
+```
+
+#### Deleta um item do estoque de um hospital específico
+
+```http
+  DELETE /api/v1/hospital/stock/:id
 ```
 
 ## Autores
