@@ -22,7 +22,14 @@ class UpdateStockService {
       }
 
       const idStock = request.params.stockId;
+      const authorizationHeader = request.headers.authorization;
 
+      if (!authorizationHeader) {
+        response.status(401).json({
+          success: false,
+          message: "Not Authenticated. Acess token is missing!",
+        });
+      }
       const StockHospital = await Stock.findById(idStock);
 
       if (!StockHospital) {
