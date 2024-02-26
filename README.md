@@ -23,7 +23,7 @@ Para usar um banco de dados MongoDB, siga o exemplo do .ENV.EXAMPLE, usando as s
 
 - **Swagger UI**
 
-  - Endpoint: `/api-docs`
+  - Endpoint: `/api/v1/api-docs/`
   - Description: Explore the API using Swagger documentation.
 
 ## Documentação da API
