@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import Patient from "../models/patient.models";
+import { Request, Response } from 'express';
+import Patient from '../models/patient.models';
 
 class GetPatientService {
   public async getPatient(request: Request, response: Response) {
@@ -8,7 +8,7 @@ class GetPatientService {
 
       if (!hospitalId) {
         return response.status(400).json({
-          error: "Parameter 'hospitalId' is missing in the request query.",
+          error: 'Parameter (hospitalId) is missing in the request query.',
         });
       }
 
@@ -16,17 +16,17 @@ class GetPatientService {
 
       if (patients.length === 0) {
         return response.status(404).json({
-          error: "No patients found for the specified hospital ID.",
+          error: 'No patients found for the specified hospital ID.',
         });
       }
 
       return response.status(200).json({
-        message: "Successful operation. Returns the list of patients.",
+        message: 'Successful operation. Returns the list of patients.',
         patients,
       });
     } catch (error: any) {
       return response.status(500).json({
-        error: "Internal server error.",
+        error: 'Internal server error.',
       });
     }
   }

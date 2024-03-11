@@ -1,8 +1,8 @@
-import { Request, Response } from "express";
-import HospitalModel from "../models/hospital.models";
-import Stock from "../models/stock.models";
-import { createValidationSchemaStock } from "../validations/validations";
-import { ValidationError } from "yup";
+import { Request, Response } from 'express';
+import HospitalModel from '../models/hospital.models';
+import Stock from '../models/stock.models';
+import { createValidationSchemaStock } from '../validations/validations';
+import { ValidationError } from 'yup';
 
 class CreateStockService {
   public async createStock(request: Request, response: Response) {
@@ -11,14 +11,11 @@ class CreateStockService {
         stripUnknown: true,
       });
     } catch (error) {
-      if (error instanceof ValidationError) {
-        const details = error.errors;
-        return response
-          .status(404)
-          .json({ error: "Validation error", details });
-      } else {
-        return response.status(404).json({ error: "Validation error" });
-      }
+      return error instanceof ValidationError
+        ? response
+            .status(404)
+            .json({ error: 'Validation error', details: error.errors })
+        : response.status(404).json({ error: 'Validation error' });
     }
 
     try {
@@ -26,32 +23,35 @@ class CreateStockService {
       const hospitalId = request.params.hospitalId;
       const authorizationHeader = request.headers.authorization;
 
-      if (!authorizationHeader) {
-        response.status(401).json({
-          success: false,
-          message: "Not Authenticated. Acess token is missing!",
-        });
-      }
+      !authorizationHeader
+        ? response
+            .status(401)
+            .json({
+              success: false,
+              message: 'Not Authenticated. Access token is missing!',
+            })
+        : void 0;
+
       const hospital = await HospitalModel.findById(hospitalId);
 
       if (!hospital) {
-        return response.status(404).json({ message: "Hospital not found" });
+        return response.status(404).json({ message: 'Hospital not found' });
       }
 
       const stocks = await Stock.create({
         name,
         description,
         amount,
-        hospitalId
+        hospitalId,
       });
       response.status(201).json({
         success: true,
-        message: "Hospital stock",
+        message: 'Hospital stock',
         stocks: stocks,
         hospitalName: hospital.nameHospital,
       });
     } catch (error: any) {
-      response.status(500).json({ message: "Error when registering stock" });
+      response.status(500).json({ message: 'Error when registering stock' });
     }
   }
 }

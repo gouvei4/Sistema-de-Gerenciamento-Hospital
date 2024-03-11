@@ -1,5 +1,5 @@
-import { Router } from "express";
-import CreateStockService from "../services/post.stock.service";
+import { Router } from 'express';
+import CreateStockService from '../services/post.stock.service';
 
 class CreateStockController {
     router = Router();
@@ -9,7 +9,7 @@ class CreateStockController {
     }
 
     initRoutes() {
-        this.router.post('/:hospitalId/stock', CreateStockService.createStock)
+        this.router.post('/:hospitalId/stock', CreateStockService.createStock);
     }
 }
 

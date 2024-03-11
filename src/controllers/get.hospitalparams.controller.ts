@@ -1,5 +1,5 @@
-import { Router } from "express";
-import GetParamsHospitals from "../services/get.hospitalparams.service";
+import { Router } from 'express';
+import GetParamsHospitals from '../services/get.hospitalparams.service';
 
 class GetParamsHospitalController {
     router = Router();
@@ -9,7 +9,7 @@ class GetParamsHospitalController {
     }
 
     initRoutes() {
-        this.router.get('', GetParamsHospitals.getParams)
+        this.router.get('', GetParamsHospitals.getParams);
     }
 }
 

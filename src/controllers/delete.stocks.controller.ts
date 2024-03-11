@@ -1,5 +1,5 @@
-import { Router } from "express";
-import DeleteStockService from "../services/delete.stocks.service";
+import { Router } from 'express';
+import DeleteStockService from '../services/delete.stocks.service';
 
 class DeleteStockController {
     router = Router();
@@ -9,7 +9,7 @@ class DeleteStockController {
     }
 
     initRoutes() {
-        this.router.delete('/:id', DeleteStockService.deleteStockService)
+        this.router.delete('/:id', DeleteStockService.deleteStockService);
     }
 }
 

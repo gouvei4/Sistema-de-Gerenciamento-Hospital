@@ -1,5 +1,5 @@
-import { Router } from "express";
-import UpdateStockService from "../services/update.stock.service";
+import { Router } from 'express';
+import UpdateStockService from '../services/update.stock.service';
 
 class UpdateStockController {
     router = Router();
@@ -9,7 +9,7 @@ class UpdateStockController {
     }
 
     initRoutes() {
-        this.router.put('/:hospitalId/:stockId', UpdateStockService.UpdateStock)
+        this.router.put('/:hospitalId/:stockId', UpdateStockService.UpdateStock);
     }
 }
 

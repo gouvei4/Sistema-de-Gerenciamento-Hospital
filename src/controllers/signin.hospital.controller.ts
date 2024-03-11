@@ -1,5 +1,5 @@
-import { Router } from "express";
-import SignInHospitalService from "../services/signin.hospital.service";
+import { Router } from 'express';
+import SignInHospitalService from '../services/signin.hospital.service';
 
 class SignInHospitalController {
     router = Router();
@@ -9,7 +9,7 @@ class SignInHospitalController {
     }
 
     initRoutes() {
-        this.router.post('', SignInHospitalService.signIn)
+        this.router.post('', SignInHospitalService.signIn);
     }
 }
 

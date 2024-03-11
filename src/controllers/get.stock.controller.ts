@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router } from 'express';
 import GetStocksService from '../services/get.stock.service';
 
 class GetStockController {
@@ -9,7 +9,7 @@ class GetStockController {
     }
 
     initRoutes() {
-        this.router.get('', GetStocksService.getStocks)
+        this.router.get('', GetStocksService.getStocks);
     }
 }
 

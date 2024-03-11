@@ -1,5 +1,5 @@
-import { Router } from "express";
-import DeletePatient from "../services/delete.patient.service";
+import { Router } from 'express';
+import DeletePatient from '../services/delete.patient.service';
 
 class DeletePatientController {
     router = Router();
@@ -9,7 +9,7 @@ class DeletePatientController {
     }
 
     initRoutes() {
-        this.router.delete('/:id', DeletePatient.deletePatient)
+        this.router.delete('/:id', DeletePatient.deletePatient);
     }
 }
 

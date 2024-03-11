@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import Stock from "../models/stock.models";
+import { Request, Response } from 'express';
+import Stock from '../models/stock.models';
 
 class DeleteStockService {
   public async deleteStockService(request: Request, response: Response) {
@@ -8,14 +8,12 @@ class DeleteStockService {
 
       const authorizationHeader = request.headers.authorization;
 
-      if (!authorizationHeader) {
-        response.status(401).json({
-          success: false,
-          error: "Not authorized",
-          message: "Not authorized Access token is missing",
-        });
-        return;
-      }
+      !authorizationHeader
+        ? response.status(401).json({
+            success: false,
+            message: 'Not Authenticated. Acess token is missing!',
+          })
+        : void 0;
 
       const stocks = await Stock.findByIdAndDelete(stockId);
 

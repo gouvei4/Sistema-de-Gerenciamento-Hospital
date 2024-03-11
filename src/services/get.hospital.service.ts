@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import Hospital, { IHospital } from "../models/hospital.models";
+import { Request, Response } from 'express';
+import Hospital, { IHospital } from '../models/hospital.models';
 
 class GetAllHospitalsService {
   public async getAll(request: Request, response: Response) {
@@ -14,21 +14,24 @@ class GetAllHospitalsService {
         availableBeds: hospital.availableBeds,
       }));
 
-      if (filteredHospitals.length === 0) {
-        return response.status(404).json({
-          error: "Hospitals not found",
-          message: "Not Found",
-        });
-      }
-
-      return response.status(200).json({
-        status: 201,
-        message: "Successful operation. Returns a list of hospitals.",
-        filteredHospitals,
-      });
+      return filteredHospitals.length === 0 ? (
+        response.status(404).json({
+          error: 'Hospitals not found',
+          message: 'Not Found',
+        }),
+        void 0
+      ) : (
+        response.status(200).json({
+          status: 201,
+          message: 'Successful operation. Returns a list of hospitals.',
+          filteredHospitals,
+        }),
+        void 0
+      );
+      
     } catch (error: any) {
       return response.status(500).json({
-        error: "Internal Server Error",
+        error: 'Internal Server Error',
         message: error.message,
       });
     }
