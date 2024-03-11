@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IHospital extends Document {
   nameHospital: string;
@@ -21,4 +21,4 @@ const hospitalSchema: Schema<IHospital> = new Schema<IHospital>({
   confirmPassword: { type: String, required: true },
 });
 
-export default mongoose.model<IHospital>("Hospital", hospitalSchema);
+export default mongoose.model<IHospital>('Hospital', hospitalSchema);

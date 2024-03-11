@@ -1,5 +1,5 @@
-import mongoose, { Schema } from "mongoose";
-import { Patient } from "../types/patient";
+import mongoose, { Schema } from 'mongoose';
+import { Patient } from '../types/patient';
 
 const patientSchema = new Schema<Patient>({
   name: { type: String, required: true },
@@ -10,6 +10,6 @@ const patientSchema = new Schema<Patient>({
   hospitalId: { type: String, required: true },
 });
 
-const Patient = mongoose.model("Patient", patientSchema);
+const Patient = mongoose.model('Patient', patientSchema);
 
 export default Patient;
