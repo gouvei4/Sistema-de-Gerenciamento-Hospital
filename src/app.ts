@@ -30,5 +30,5 @@ process.env.NODE_ENV !== 'test'
       console.log(`Server running on port: ${PORT}`);
     }) && mongoose.connect(process.env.MONGO_URI as string)
       .then(() => console.log('Connected to Database'))
-      .catch(error => console.log('Erro to connect Database!'))
+      .catch(error => console.log('Error to connect Database!'))
   : null;
