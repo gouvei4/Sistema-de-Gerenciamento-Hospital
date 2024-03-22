@@ -86,7 +86,6 @@ class CreatePatientService {
         hospitalName: hospital.nameHospital,
       });
     } catch (error: any) {
-      console.log(error);
       response.status(500).json({ message: 'Error when registering patient' });
     }
   }

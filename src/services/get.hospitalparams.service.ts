@@ -35,7 +35,6 @@ class GetParamsHospitals {
         })()
       );
     } catch (error: any) {
-      console.error('Error while fetching hospitals:', error);
       return response.status(500).json({
         success: false,
         message: 'Internal Server Error',
