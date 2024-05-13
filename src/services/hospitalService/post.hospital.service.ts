@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import { Hospital } from '../types/hospital';
-import hospitalSchema from '../models/hospital.models';
+import { Hospital } from '../../types/hospital';
+import hospitalSchema from '../../models/hospital.models';
 import { format, isValid, parse } from 'date-fns';
-import { createValidationSchemaHospital } from '../validations/validations';
+import { createValidationSchemaHospital } from '../../validations/validations';
 import { ValidationError } from 'yup';
 
 class CreateHospitalService {

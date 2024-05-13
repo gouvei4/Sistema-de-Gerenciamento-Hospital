@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Patient from '../models/patient.models';
+import Patient from '../../models/patient.models';
 
 class GetPatientService {
   public async getPatient(request: Request, response: Response) {

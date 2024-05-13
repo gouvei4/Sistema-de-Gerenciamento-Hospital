@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Hospital, { IHospital } from '../models/hospital.models';
+import Hospital, { IHospital } from '../../models/hospital.models';
 
 class GetParamsHospitals {
   public async getParams(request: Request, response: Response) {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import CreateHospitalService from '../services/post.hospital.service';
+import CreateHospitalService from '../services/hospitalService/post.hospital.service';
 
 describe('CreateHospitalService', () => {
   it('Should return error 404 if the date of birth has an invalid format', () => {

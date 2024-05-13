@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import HospitalModel from '../models/hospital.models';
-import Patient from '../models/patient.models';
+import HospitalModel from '../../models/hospital.models';
+import Patient from '../../models/patient.models';
 import { format, isValid, parse } from 'date-fns';
-import { createValidationSchemaPaciente } from '../validations/validations';
+import { createValidationSchemaPaciente } from '../../validations/validations';
 import { ValidationError } from 'yup';
 
 class CreatePatientService {

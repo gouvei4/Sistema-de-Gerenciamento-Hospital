@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import DeleteStockService from '../services/delete.stocks.service';
+import DeleteStockService from '../../services/stockService/delete.stocks.service';
 
 class DeleteStockController {
     router = Router();

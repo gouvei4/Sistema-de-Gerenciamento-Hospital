@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CreateStockService from '../services/post.stock.service';
+import CreateStockService from '../../services/stockService/post.stock.service';
 
 class CreateStockController {
     router = Router();

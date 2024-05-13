@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import GetParamsHospitals from '../services/get.hospitalparams.service'; 
+import GetParamsHospitals from '../services/hospitalService/get.hospitalparams.service'; 
 import Hospital, { IHospital } from '../models/hospital.models';
 
 jest.mock('../models/hospital.models', () => ({

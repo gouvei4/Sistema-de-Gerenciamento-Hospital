@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Stock from '../models/stock.models';
+import Stock from '../../models/stock.models';
 
 class GetStocksService {
   public async getStocks(request: Request, response: Response) {

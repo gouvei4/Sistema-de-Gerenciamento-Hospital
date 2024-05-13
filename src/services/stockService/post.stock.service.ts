@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import HospitalModel from '../models/hospital.models';
-import Stock from '../models/stock.models';
-import { createValidationSchemaStock } from '../validations/validations';
+import HospitalModel from '../../models/hospital.models';
+import Stock from '../../models/stock.models';
+import { createValidationSchemaStock } from '../../validations/validations';
 import { ValidationError } from 'yup';
 
 class CreateStockService {

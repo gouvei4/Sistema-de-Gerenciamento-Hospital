@@ -5,11 +5,11 @@ import GetAllHospitalsController from '../controllers/get.hospital.controller';
 import GetParamsHospitalController from '../controllers/get.hospitalparams.controller';
 import CreatePatientController from '../controllers/create.patient.controller';
 import GetPatientController from '../controllers/get.patienthospital.controller';
-import CreateStockController from '../controllers/create.stock.controller';
-import GetStockController from '../controllers/get.stock.controller';
-import UpdateStockController from '../controllers/update.stock.controller';
+import CreateStockController from '../controllers/stockController/create.stock.controller';
+import GetStockController from '../controllers/stockController/get.stock.controller';
+import UpdateStockController from '../controllers/stockController/update.stock.controller';
 import DeletePatientController from '../controllers/delete.patient.controller';
-import DeleteStockController from '../controllers/delete.stocks.controller';
+import DeleteStockController from '../controllers/stockController/delete.stocks.controller';
 
 const routes = express.Router();
 

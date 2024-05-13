@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Stock from '../models/stock.models';
+import Stock from '../../models/stock.models';
 
 class DeleteStockService {
   public async deleteStockService(request: Request, response: Response) {

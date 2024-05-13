@@ -106,6 +106,6 @@
       // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
       "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
     },
-    "include": ["src/*/*.ts"],
+    "include": ["src/*/*.ts", "src/controllers/stockController/create.stock.controller.ts", "src/controllers/stockController/delete.stocks.controller.ts", "src/controllers/stockController/get.stock.controller.ts", "src/controllers/stockController/update.stock.controller.ts", "src/services/hospitalService/post.hospital.service.ts", "src/services/hospitalService/signin.hospital.service.ts", "src/services/patientService/get.patienthospital.service.ts", "src/services/hospitalService/get.hospitalparams.service.ts", "src/services/hospitalService/get.hospital.service.ts", "src/services/patientService/post.patient.service.ts", "src/services/patientService/delete.patient.service.ts", "src/services/stockService/update.stock.service.ts", "src/services/stockService/delete.stocks.service.ts", "src/services/stockService/get.stock.service.ts", "src/services/stockService/post.stock.service.ts"],
     "exclude": ["node_modules"]
   }

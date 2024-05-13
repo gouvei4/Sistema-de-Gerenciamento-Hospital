@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import GetAllHospitalsService from '../services/get.hospital.service';
+import GetAllHospitalsService from '../services/hospitalService/get.hospital.service';
 import { Model } from 'mongoose';
 import Hospital, { IHospital } from '../models/hospital.models';
 

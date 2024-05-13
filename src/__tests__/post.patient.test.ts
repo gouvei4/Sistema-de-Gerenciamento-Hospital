@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import CreatePatientService from '../services/post.patient.service'; 
+import CreatePatientService from '../services/patientService/post.patient.service'; 
 import HospitalModel from '../models/hospital.models';
 import Patient from '../models/patient.models';
 import { ValidationError } from 'yup';

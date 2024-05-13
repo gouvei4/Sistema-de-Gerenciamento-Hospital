@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { Hospital } from '../types/hospital';
-import hospitalSchema from '../models/hospital.models';
+import { Hospital } from '../../types/hospital';
+import hospitalSchema from '../../models/hospital.models';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
