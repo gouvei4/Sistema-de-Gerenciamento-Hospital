@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import DeletePatient from '../services/delete.patient.service';
+import DeletePatient from '../../services/patientService/delete.patient.service';
 
 class DeletePatientController {
     router = Router();

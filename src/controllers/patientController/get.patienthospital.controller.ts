@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import GetPatientService from '../services/get.patienthospital.service';
+import GetPatientService from '../../services/patientService/get.patienthospital.service';
 
 class GetPatientController {
     router = Router();
