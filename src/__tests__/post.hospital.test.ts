@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import CreateHospitalService from '../services/hospitalService/post.hospital.service';
+import { testServer } from './jest.setup';
+import { STATUS_CODES } from 'http';
 
 describe('CreateHospitalService', () => {
   it('Should return error 404 if the date of birth has an invalid format', () => {
@@ -57,5 +59,23 @@ describe('CreateHospitalService', () => {
     expect(hospital.password).toBe('teste123@');
     expect(hospital.confirmPassword).toBe('teste123@');
 
-  });  
+  });
+
+  it('Should return validation error', async () => {
+    const hospital = await testServer
+      .post('/api/v1/signup')
+      .send({
+        nameHospital: 'Hosp',
+        address: 'Rua teste, 147',
+        beds: 50,
+        availableBeds: 80,
+        email: 'hospitalteste@gmail.com',
+        password: 'teste123@',
+        confirmPassword: 'teste123@'
+
+      });
+
+    expect(hospital.statusCode).toEqual(404);
+    expect(hospital.body.error).toEqual('Validation error');
+  });
 });
